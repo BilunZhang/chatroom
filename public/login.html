@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>login</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="iconfont.css">
+</head>
+
+<body>
+    <header id="header">FSE Chatroom
+        <hr>
+    </header>
+    <div class="login-box">
+        <div class="title">
+            <button class="login_select"><a href="/">LOG IN</a></button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            <button class="signup"><a href="/register">SIGN UP</a></button>
+        </div>
+        <div class="name-box">
+            <span class="iconfont icon-people"></span>
+            <input id="login_name" type="text" class="user-name" placeholder="Please Type Your Name">
+        </div>
+        <div class="name-box">
+            <span class="iconfont icon-lock"></span>
+            <input id="login_password" type="password" class="user-name" placeholder="Please Type Your Password">
+        </div>
+        <div class="button-box">
+            <input onclick="login()" type="button" class="login-button" value="LOG IN">
+        </div>
+    </div>
+</body>
+<script src="js/socket.io.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/login.js"></script>
+
+</html>

@@ -1,0 +1,227 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url(https://images.unsplash.com/photo-1493314894560-5c412a56c17c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80);
+    background-size: 100% 245%;
+    background-repeat: no-repeat;
+}
+
+#header {
+    margin-top: 20px;
+    padding-left: 20px;
+    height: 20px;
+    font-size: 25px;
+    font-weight: 1000;
+    color: #072130c5;
+}
+
+.chat-box {
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 20px, 50px;
+    background-color: #00000090;
+    width: 800px;
+    height: 600px;
+    box-shadow: 1px 1px 15px #333333;
+}
+
+.chat-header {
+    margin-top: 20px;
+    height: 36px;
+    box-shadow: 1px 1px 15px #7B8C99;
+}
+
+.button-box {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.log-out {
+    margin-top: 5px;
+    margin-right: 5px;
+    height: 100%;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 15px;
+    color: #031e2c;
+    background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.chat-body {
+    height: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 5px;
+    padding: 5px;
+}
+
+.chat-body-left {
+    height: 100%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 5px;
+}
+
+.chat-content {
+    margin-bottom: 5px;
+    height: 100%;
+    box-shadow: 1px 1px 15px #7B8C99;
+    overflow: scroll;
+}
+
+.my-message-box {
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+    margin: 5px;
+}
+
+.other-message-box {
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    margin: 5px;
+}
+
+.message-content {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+    padding: 5px 10px;
+    border-radius: 15px;
+    color: #dcdddf
+}
+
+.other-message-content {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+    padding: 5px 5px;
+    border-radius: 15px;
+    color: #dcdddf
+}
+
+.message-content span {
+    padding: 5px 0;
+}
+
+.other-message-content span {
+    padding: 5px 0;
+}
+
+.message-arrow {
+    width: 0;
+    height: 0;
+    border-width: 8px;
+    border-style: solid;
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+    align-self: center;
+}
+
+.other-message-arrow {
+    width: 0;
+    height: 0;
+    border-width: 8px;
+    border-style: solid;
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+    align-self: center;
+}
+
+.user-information {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+}
+
+.other-user-information {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+}
+
+.user-chat-img {
+    width: 60px;
+    height: 40px;
+}
+
+.user-chat-name {
+    color: #dcdddf;
+    font-size: 16px;
+    text-align: center;
+}
+
+.user-chat-time {
+    color: #dcdddf;
+    font-size: 12px;
+    text-align: center;
+}
+
+.chat-edit {
+    margin-top: 5px;
+    display: flex;
+    text-align: left;
+    align-items: center;
+    box-shadow: 1px 1px 15px #7d8992;
+    overflow: hidden;
+}
+
+.edit-box {
+    width: 1000px;
+    height: 30px;
+    margin: 5px;
+    border: none;
+    outline: none;
+}
+
+.edit-button {
+    height: 100%;
+    padding: 5px 15px;
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+    color: #dcdddf;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.chat-body-right {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    box-shadow: 1px 1px 15px #7B8C99;
+}
+
+.user-name {
+    margin: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #e1e3e4;
+}
+
+.user-img {
+    width: 100px;
+    height: 80px;
+    margin: 2px;
+}
+
+.online-count {
+    font-size: 18px;
+    font-weight: bold;
+    color: #dce4e9;
+}

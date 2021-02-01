@@ -1,3 +1,3 @@
-# chatroom
-# node main.js
-# LocalHost:3000
+FSE chatroom
+node main.js
+LocalHost:3000

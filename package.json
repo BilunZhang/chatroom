@@ -1,17 +1,22 @@
 {
-  "name": "chatroom",
+  "name": "chatroor",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon main.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.2",
-    "mongodb": "^3.0.2",
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
     "mongoose": "^5.11.14",
     "socket.io": "^2.0.4"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0"
   }
 }

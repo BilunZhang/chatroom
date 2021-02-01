@@ -1,19 +1,25 @@
 const url = decodeURI(location.href).split('?')[1].split('&');
-//finding HTML elements by class name
+//Find HTML elements by class names
 const chatContent = document.getElementsByClassName('chat-content')[0];
 const editBox = document.getElementsByClassName('edit-box')[0];
 const editButton = document.getElementsByClassName('edit-button')[0];
 const userName = document.getElementsByClassName('user-name')[0];
 const logOut = document.getElementsByClassName('log-out')[0];
-//connext socket.io 
+//Connect to socket.io
 const socket = io.connect('http://127.0.0.1:3000');
-
 $.get('/getUser', res => {
     let users = ''
-    res.userArr.forEach(item => {
+    res.onlineUsers.forEach(item => {
         users += item + '<br/><br/>'
     })
     userName.innerHTML = users;
+    res.infoArr.forEach(item => {
+        if (item.user_name === url[0].split('=')[1]) {
+            createMyMessage(item)
+        } else {
+            createOtherMessage(item)
+        }
+    })
 })
 editButton.addEventListener('click', sendMessage);
 logOut.addEventListener('click', logout);
@@ -32,7 +38,7 @@ function logout() {
 }
 
 socket.on('message', function(information) {
-    if (information.name !== url[0].split('=')[1]) {
+    if (information.user_name !== url[0].split('=')[1]) {
         createOtherMessage(information);
     }
 });
@@ -47,8 +53,8 @@ socket.on('userChange', function(data) {
 function sendMessage() {
     if (editBox.value !== '') {
         const myInformation = {
-            name: url[0].split('=')[1],
-            message: editBox.value
+            user_name: url[0].split('=')[1],
+            info_msg: editBox.value
         };
         socket.emit('message', myInformation);
         createMyMessage();
@@ -57,14 +63,14 @@ function sendMessage() {
 
 }
 
-function createMyMessage() {
+function createMyMessage(information) {
     var myMessageBox = document.createElement('div');
     myMessageBox.className = 'my-message-box';
 
     var messageContent = document.createElement('div');
     messageContent.className = 'message-content';
     var text = document.createElement('span');
-    text.innerHTML = editBox.value;
+    text.innerHTML = editBox.value || information.info_msg;
     messageContent.appendChild(text);
     myMessageBox.appendChild(messageContent);
 
@@ -75,9 +81,8 @@ function createMyMessage() {
     var userInformation = document.createElement('div');
     userInformation.className = 'user-information';
     var userChatName = document.createElement('div');
-    const userChatTime = document.createElement('span');
     userChatName.className = 'user-chat-name';
-    userChatName.innerHTML = `<span class="user-chat-time">${getCurrentTime()}</span><br/>` + url[0].split('=')[1];
+    userChatName.innerHTML = `<span class="user-chat-time">${information ? information.info_time.substr(11) : getCurrentTime()}</span><br/>` + url[0].split('=')[1];
     userInformation.appendChild(userChatName);
     myMessageBox.appendChild(userInformation);
     chatContent.appendChild(myMessageBox);
@@ -91,11 +96,11 @@ function createOtherMessage(information) {
     otherUserInformation.className = 'other-user-information';
     const userChatTime = document.createElement('span');
     userChatTime.className = 'user-chat-time';
-    userChatTime.innerHTML = getCurrentTime();
+    userChatTime.innerHTML = information.info_time.substr(11);
     otherUserInformation.appendChild(userChatTime);
     const userChatName = document.createElement('span');
     userChatName.className = 'user-chat-name';
-    userChatName.innerHTML = information.name;
+    userChatName.innerHTML = information.user_name;
     otherUserInformation.appendChild(userChatName);
     otherMessageBox.appendChild(otherUserInformation);
     const otherMessageArrow = document.createElement('div');
@@ -104,7 +109,7 @@ function createOtherMessage(information) {
     const otherMessageContent = document.createElement('div');
     otherMessageContent.className = 'other-message-content';
     const text = document.createElement('span');
-    text.innerHTML = information.message;
+    text.innerHTML = information.info_msg;
     otherMessageContent.appendChild(text);
     otherMessageBox.appendChild(otherMessageContent);
     chatContent.appendChild(otherMessageBox);
@@ -112,6 +117,6 @@ function createOtherMessage(information) {
 }
 
 function getCurrentTime() {
-    const date = new Date().toLocaleString()
+    const date = new Date().toLocaleString();
     return date;
 }
